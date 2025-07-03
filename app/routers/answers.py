@@ -6,7 +6,6 @@ router = APIRouter()
 
 @router.post("/answer")
 async def submit_answer(req: AnswerRequest):
-    """Record an answer for a specific session."""
     session = await sessions_collection.find_one({"_id": req.session_id})
     if not session:
         raise HTTPException(404, "Session not found.")
