@@ -130,11 +130,14 @@ Response:
 
 ## Testing
 
-To run the test suite (requires a test database):
-```sh
-set TESTING=1  # On Windows
-pytest -s test_sessions.py
-```
+You can test the API interactively using the built-in Swagger UI:
+
+1. Start the FastAPI app:
+   ```sh
+   uvicorn app.app:app --reload
+   ```
+2. Open your browser and go to [http://localhost:8000/docs](http://localhost:8000/docs)
+3. Use the interactive interface to try out all endpoints, submit answers, and get recommendations.
 
 ---
 
