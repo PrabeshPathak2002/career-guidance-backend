@@ -11,11 +11,12 @@ async def get_questions() -> List[str]:
     """
     try:
         doc = await questions_collection.find_one({})
+        print("DEBUG: questions_collection.find_one({}) returned:", doc)
         if not doc or "questions" not in doc:
             return []
         return doc["questions"]
     except Exception as e:
-        # Log error if you have logging set up
+        print("DEBUG: Exception in get_questions():", e)  # Debug print for exceptions
         return []
 
 @router.post("/session")

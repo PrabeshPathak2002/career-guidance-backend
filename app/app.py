@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from app.routers.sessions import router as sessions_router, questions
+from app.routers.sessions import router as sessions_router
 from app.routers.answers import router as answers_router
 from app.services.ai_service import generate_career_recommendation
 from app.services.db import sessions_collection
