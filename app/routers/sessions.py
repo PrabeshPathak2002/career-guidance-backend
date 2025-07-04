@@ -1,3 +1,8 @@
+"""
+Router for managing user sessions and questions in the Career Guidance API.
+Handles session creation, question progression, and session reset.
+"""
+
 from fastapi import APIRouter, HTTPException
 from uuid import uuid4
 from app.services.db import sessions_collection, questions_collection
@@ -8,6 +13,7 @@ router = APIRouter()
 async def get_questions() -> List[str]:
     """
     Retrieve the list of questions from the database.
+    Returns a list of question strings, or an empty list if not found.
     """
     try:
         doc = await questions_collection.find_one({})
@@ -22,7 +28,8 @@ async def get_questions() -> List[str]:
 @router.post("/session")
 async def start_session() -> Dict[str, Any]:
     """
-    Start a new session and return the first question.
+    Start a new user session and return the first question.
+    Creates a new session document in the DB and returns the session ID and first question.
     """
     questions = await get_questions()
     if not questions:
@@ -46,6 +53,8 @@ async def start_session() -> Dict[str, Any]:
 async def get_next_question(session_id: str) -> Dict[str, Any]:
     """
     Get the next question for the given session.
+    Increments the current question index and returns the next question.
+    If all questions are answered, returns a completion message.
     """
     questions = await get_questions()
     try:
@@ -71,6 +80,7 @@ async def get_next_question(session_id: str) -> Dict[str, Any]:
 async def reset_session(session_id: str) -> Dict[str, str]:
     """
     Reset the session's answers and question progress.
+    Sets the current question index and answers array back to the start.
     """
     try:
         session = await sessions_collection.find_one({"_id": session_id})
