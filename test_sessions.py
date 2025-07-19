@@ -13,7 +13,7 @@ def test_start_session():
 def test_get_next_question():
     session_resp = client.post("/session")
     data = session_resp.json()
-    print("Session response:", data)  
+    print("Session response:", data) 
     assert "session_id" in data, f"Unexpected response: {data}"
     if "session_id" not in data:
         return
@@ -26,7 +26,7 @@ def test_get_next_question():
 def test_reset_session():
     session_resp = client.post("/session")
     data = session_resp.json()
-    print("Session response:", data)  
+    print("Session response:", data) 
     assert "session_id" in data, f"Unexpected response: {data}"
     if "session_id" not in data:
         return
