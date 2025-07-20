@@ -24,9 +24,9 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",  # React dev server
-        "https://your-frontend-domain.com",  # Replace with deployed frontend URL
-        "https://career-guidance-backend-yvaw.onrender.com"  # Deployed backend
+        "http://localhost:3000",           # React dev server
+        "http://localhost:5173",           # Vite dev server
+        "https://my-frontend-domain.com"   # Replace with your deployed frontend URL
     ],
     allow_credentials=True,
     allow_methods=["*"],
