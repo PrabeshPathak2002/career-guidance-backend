@@ -25,7 +25,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # React dev server
-        "https://your-frontend-domain.com"  # Replace with deployed frontend URL
+        "https://your-frontend-domain.com",  # Replace with deployed frontend URL
+        "https://career-guidance-backend-yvaw.onrender.com"  # Deployed backend
     ],
     allow_credentials=True,
     allow_methods=["*"],
