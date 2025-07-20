@@ -26,7 +26,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",           # React dev server
         "http://localhost:5173",           # Vite dev server
-        "https://my-frontend-domain.com"   # Replace with your deployed frontend URL
+        "https://career-guidance-frontend-flame.vercel.app"  
     ],
     allow_credentials=True,
     allow_methods=["*"],
