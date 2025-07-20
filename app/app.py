@@ -6,6 +6,7 @@ Sets up the app, includes routers, and defines top-level endpoints.
 from fastapi import FastAPI, HTTPException, Request
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
+from fastapi.middleware.cors import CORSMiddleware
 from app.routers.sessions import router as sessions_router
 from app.routers.answers import router as answers_router
 from app.services.ai_service import generate_career_recommendation
@@ -17,6 +18,18 @@ app = FastAPI(
     title="Career Guidance API",
     description="AI-powered career guidance with rate limiting",
     version="1.0.0"
+)
+
+# Add CORS middleware to allow frontend requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",  # React dev server
+        "https://your-frontend-domain.com"  # Replace with deployed frontend URL
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Add rate limiter to app
