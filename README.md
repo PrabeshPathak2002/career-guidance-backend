@@ -31,6 +31,12 @@ app/
 
 ---
 
+## Related Frontend Repo
+
+This Backend is connected to the frontend located at:  
+👉 [Career-Guidance-Frontend (GitHub)](https://github.com/PrashritTiwari/career-guidance-frontend)
+
+
 ## Setup Instructions
 
 ### 1. Clone the Repository
